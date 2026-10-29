@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f6f0e4" />
+  <title>OLLI — Crípticos para mentes curiosas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="OLLI inicio"><span class="brand-mark">O</span><span>OLLI<span class="brand-dot">.</span></span></a>
+    <div class="top-note">UN BUEN CRÍPTICO TE CAMBIA EL DÍA</div>
+    <button class="icon-btn" id="helpBtn" aria-label="Cómo jugar">?</button>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <div class="side-label">TU RINCÓN</div>
+      <section class="streak-card"><div class="flame">✳</div><div><span class="side-label">RACHA ACTUAL</span><strong id="streak">0 días</strong></div><span class="streak-spark">✦</span></section>
+      <section class="progress-card"><div class="progress-head"><span class="side-label">TU RECORRIDO</span><span id="solvedCount">0 resueltos</span></div><div class="progress-track"><i id="progressBar"></i></div><p>Retos al azar, sin niveles.</p></section>
+      <div class="side-label nav-label">JUEGOS</div>
+      <button class="nav-item selected"><span class="nav-icon">✳</span> Críptico <span class="nav-arrow">↗</span></button>
+      <div class="side-bottom"><div class="tiny-mark">O</div><p>Hecho para pensar<br>un poquito distinto.</p><span>OLLI © 2026</span></div>
+    </aside>
+
+    <section class="game-area">
+      <div class="game-wrap">
+        <div class="game-meta"><div><span class="eyebrow">CRÍPTICO ALEATORIO</span><span class="date" id="date">MODO LIBRE · SIN NIVELES</span></div><div class="difficulty"><span class="difficulty-dot"></span> RETO <b id="difficulty">DIFÍCIL</b></div></div>
+        <div class="challenge-card">
+          <div class="quote-mark">“</div>
+          <h1 id="clue">Cargando tu próximo críptico…</h1>
+          <div class="clue-foot"><span>LEE ENTRE LÍNEAS</span><span id="lengthLabel">— LETRAS</span></div>
+        </div>
+
+        <div id="feedback" class="feedback" aria-live="polite"></div>
+        <div id="answerSlots" class="answer-slots" aria-label="Tu respuesta"></div>
+        <div class="attempts-row"><div id="attemptDots" class="attempt-dots"></div><span id="attemptText">5 intentos</span><span class="answer-note">Las tildes no cuentan</span></div>
+
+        <div class="actions-row"><button class="hint-btn" id="hintBtn"><span>✦</span><span><b>Pedir una pista</b><small>Cuesta 1 intento</small></span><span class="hint-arrow">↗</span></button><button class="skip-btn" id="skipBtn">Otro al azar <span>↻</span></button></div>
+        <div class="keyboard" id="keyboard" aria-label="Teclado"></div>
+        <div class="game-footer"><span>HECHO PARA CURIOSOS <span class="footer-star">✳</span></span><button id="shareBtn">Compartir críptico ↗</button></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-backdrop hidden" id="modal"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" id="closeModal" aria-label="Cerrar">×</button><span class="modal-icon">✳</span><h2 id="modalTitle">¿Cómo se juega?</h2><p>La definición y el juego de letras están mezclados en la misma frase. Encuentra ambas rutas hasta la respuesta.</p><ul><li>Escribe tu respuesta con el teclado.</li><li>Tienes <b>5 intentos</b> para resolverlo.</li><li>Una pista te ayuda, pero consume un intento.</li><li>Usa <b>Otro al azar</b> para saltar a un reto nuevo. Hay más de <b>1.200</b>, sin niveles ni cuenta.</li></ul><button class="primary-btn" id="gotIt">¡A pensar!</button></section></div>
+  <div class="toast" id="toast" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
