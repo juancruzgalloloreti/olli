@@ -95,6 +95,10 @@ seen.add(puzzles[currentIndex].conceptId);
 let attempts=5,typed='',usedHints=0,finished=false,current=puzzles[currentIndex],autoNext=null;
 const $=s=>document.querySelector(s);
 const slots=$('#answerSlots'), feedback=$('#feedback'), toast=$('#toast');
+const themeKey='olli-theme';
+function setTheme(theme){document.documentElement.dataset.theme=theme;const night=theme==='dark';$('#themeIcon').textContent=night?'☀':'☾';$('#themeLabel').textContent=night?'Día':'Noche';$('#themeToggle').setAttribute('aria-label',night?'Cambiar a modo día':'Cambiar a modo noche');document.querySelector('meta[name="theme-color"]').content=night?'#17221e':'#f6f0e4';localStorage.setItem(themeKey,theme)}
+setTheme(localStorage.getItem(themeKey)==='dark'?'dark':'light');
+$('#themeToggle').addEventListener('click',()=>setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark'));
 function showToast(msg){toast.textContent=msg;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2100)}
 function persist(){saved.currentPuzzleId=puzzles[currentIndex].id;saved.seenConcepts=[...seen];saved.completedConcepts=[...completed];localStorage.setItem(STORAGE,JSON.stringify(saved))}
 function save(){saved.solved=saved.solved||0;saved.streak=saved.streak||0;saved.lastDay=saved.lastDay||'';persist();updateProgress()}
